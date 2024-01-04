@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\Admin\{ForumController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/forum', [ForumController::class, 'index'])->name('forum.index');
+
+Route::get('/contato', [SiteController::class, 'contato']);
+
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/contato', [SiteController::class, 'contato']);
