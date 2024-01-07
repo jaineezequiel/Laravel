@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Topico;
 use Illuminate\Http\Request;
 
 class ForumController extends Controller
 {
-    public function index()
+    public function index(Topico $topico)
     {
-        return view('/admin/forum/index');
+        $topicos = $topico->all();
+
+        return view('/admin/forum/index', compact('topicos'));
+
     }
 }

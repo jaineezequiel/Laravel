@@ -1,3 +1,1 @@
-<div>
-    <!-- Simplicity is an acquired taste. - Katharine Gerould -->
-</div>
+<h1>Listagem do Forum</h1>
