@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Site\SiteController;
-use App\Http\Controllers\Admin\{ForumController};
+use App\Http\Controllers\Admin\{ProdutoController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/forum', [ForumController::class, 'index'])->name('forum.index');
+Route::get('/create', [ProdutoController::class, 'create'])->name('produto.create');
 
-Route::get('/contato', [SiteController::class, 'contato']);
+Route::get('/produto', [ProdutoController::class, 'index'])->name('produto.index');
+
 
 Route::get('/', function () {
     return view('welcome');
