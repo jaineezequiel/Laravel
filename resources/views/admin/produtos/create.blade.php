@@ -1,2 +1,6 @@
-<h1>Criar novo produto</h1>
+<x-layout title="Novo produto">
 
+    <form>
+    </form>
+
+</x-layout>

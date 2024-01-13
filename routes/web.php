@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Site\SiteController;
-use App\Http\Controllers\Admin\{ProdutoController};
+use App\Http\Controllers\Admin\{ProdutosController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/create', [ProdutoController::class, 'create'])->name('produto.create');
-
-Route::get('/produto', [ProdutoController::class, 'index'])->name('produto.index');
-
-
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/produtos', [ProdutosController::class, 'index'])->name('produto.index');
+Route::get('/produtos/criar', [ProdutosController::class, 'create'])->name('produto.create');
