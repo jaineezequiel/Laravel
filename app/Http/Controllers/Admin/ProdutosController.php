@@ -21,5 +21,10 @@ class ProdutosController extends Controller
         return view('admin.produtos.create');
     }
 
+    public function store(Request$request)
+    {
+
+    }
+
     
 }
