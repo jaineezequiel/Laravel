@@ -1,12 +1,10 @@
-<x-layout title="Produtos">
-    <a href="/produtos/criar">Novo produto</a>
+<x-layout title="">
+    <a href="/produtos/criar" class="btn btn-primary">Adicionar item</a>
 
-    <ul>
+    <ul class="list-group list-group-flush">
         @foreach ($produtos as $produto)
-        <li>{{ $produto->id }} </li>
-        <li>{{ $produto->nome }} </li>
-        <li>{{ $produto->preço }} </li>
-        <li>{{ $produto->created_at }} </li>
+        <li class="list-group-item">{{ $produto->quantidade }}  |   {{ $produto->nome }}</li>
         @endforeach        
     </ul>
+
 </x-layout>

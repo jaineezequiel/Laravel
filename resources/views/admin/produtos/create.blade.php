@@ -1,14 +1,14 @@
-<x-layout title="Novo produto">
+<x-layout title="Novo item">
 
-    <form action="/produtos" method="POST">
+    <form action="/produtos" method="POST" class="form">
         @csrf
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" aria-describedby="nome">
+            <input type="text" class="form-control" name="nome" aria-describedby="nome" required>
         </div>
         <div class="mb-3">
             <label for="quantidade" class="form-label">Quantidade</label>
-            <input type="text" class="form-control" id="quantidade">
+            <input type="text" class="form-control" name="quantidade">
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
