@@ -10,7 +10,7 @@ class ProdutosController extends Controller
 {
     public function index(Produto $produto)
     {
-        $produtos = $produto->all();
+        $produtos = Produto::query()->orderBy('nome')->get();
 
         return view('admin.produtos.index', compact('produtos'));
 
@@ -23,16 +23,18 @@ class ProdutosController extends Controller
 
     public function store(Request $request)
     {
-        $nome = $request->input('nome');
+        /*$nome = $request->input('nome');
         $quantidade = $request->input('quantidade');
 
         $produto = new Produto();
         $produto->nome = $nome;
         $produto->quantidade = $quantidade;
 
-        $produto->save();
+        $produto->save();*/
 
-        return redirect('/');
+        Produto::create($request->all());
+
+        return to_route('produtos.index');
     }
 
     

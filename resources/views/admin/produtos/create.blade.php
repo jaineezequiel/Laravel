@@ -1,6 +1,6 @@
 <x-layout title="Novo item">
 
-    <form action="/produtos" method="POST" class="form">
+    <form action="{{ route('produtos.store') }}" method="POST" class="form">
         @csrf
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>

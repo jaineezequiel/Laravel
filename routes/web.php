@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\Admin\{ProdutosController};
+use App\Models\Produto;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
+Route::controller(ProdutosController::class)->group(function(){
+    Route::get('/', 'index')->name('produtos.index');
+    Route::get('/produtos/criar', 'create')->name('produtos.create');
+    Route::post('/produtos', 'store')->name('produtos.store');
+});
+
+//Route::resource('/produtos', ProdutosController::class);
+
+/*Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
 Route::get('/produtos/criar', [ProdutosController::class, 'create'])->name('produto.create');
-Route::post('/produtos', [ProdutosController::class, 'store']);
+Route::post('/produtos', [ProdutosController::class, 'store']);*/
