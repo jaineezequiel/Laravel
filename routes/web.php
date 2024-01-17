@@ -22,7 +22,9 @@ Route::controller(ProdutosController::class)->group(function(){
     Route::post('/produtos', 'store')->name('produtos.store');
 });
 
-//Route::resource('/produtos', ProdutosController::class);
+Route::delete('/produtos/destroy/{id}', [ProdutosController::class, 'destroy'])->name('produtos.destroy');
+
+//Route::resource('/produtos', ProdutosController::class)->only(['index', 'create', 'destroy']);
 
 /*Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
 Route::get('/produtos/criar', [ProdutosController::class, 'create'])->name('produto.create');

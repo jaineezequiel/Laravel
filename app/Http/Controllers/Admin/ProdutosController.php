@@ -23,19 +23,15 @@ class ProdutosController extends Controller
 
     public function store(Request $request)
     {
-        /*$nome = $request->input('nome');
-        $quantidade = $request->input('quantidade');
-
-        $produto = new Produto();
-        $produto->nome = $nome;
-        $produto->quantidade = $quantidade;
-
-        $produto->save();*/
-
         Produto::create($request->all());
 
         return to_route('produtos.index');
     }
 
-    
+    public function destroy(Request $request) 
+    {
+        Produto::destroy($request->id);
+
+        return to_route('produtos.index');
+    }
 }
