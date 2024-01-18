@@ -17,7 +17,6 @@ class ProdutosController extends Controller
 
         return view('admin.produtos.index', 
                 compact('produtos', 'mensagemSucesso'));
-
     }
 
     public function create()
@@ -39,5 +38,20 @@ class ProdutosController extends Controller
 
         return to_route('produtos.index')
                 ->with('mensagem.sucesso', "Produto '{$produto->nome}' removido com sucesso!");
+    }
+
+    public function edit(Produto $produto)
+    {
+        return view('admin.produtos.edit', compact('produto'));
+    }
+
+    public function update(Produto $produto, Request $request) {
+
+        $produto->fill($request->all());
+        $produto->save();
+        
+        return to_route('produtos.index')
+                ->with('mensagem.sucesso', "Produto {$produto->nome} atualizado com sucesso!");
+        
     }
 }

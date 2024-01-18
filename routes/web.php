@@ -10,6 +10,8 @@ Route::controller(ProdutosController::class)->group(function(){
     Route::get('/produtos/criar', 'create')->name('produtos.create');
     Route::post('/produtos', 'store')->name('produtos.store');
     Route::delete('/produtos/destroy/{produto}', 'destroy')->name('produtos.destroy');
+    Route::get('/produtos/{produto}/edit', 'edit')->name('produtos.edit');
+    Route::put('/produtos/{produto}', 'update')->name('produtos.update');
 });
 
 //Route::resource('/produtos', ProdutosController::class)->only(['index', 'create', 'destroy']);
