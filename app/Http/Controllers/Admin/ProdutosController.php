@@ -29,17 +29,15 @@ class ProdutosController extends Controller
     {
         $produto = Produto::create($request->all());
 
-        Session::flash('mensagem.sucesso', "Produto '{$produto->nome}'adicionado com sucesso!");
-
-        return to_route('produtos.index');
+        return to_route('produtos.index')
+                ->with('mensagem.sucesso', "Produto '{$produto->nome}' adicionado com sucesso!");
     }
 
     public function destroy(Produto $produto) 
     {
         $produto->delete();
 
-        Session::flash('mensagem.sucesso', "Produto '{$produto->nome}' removido com sucesso!");
-
-        return to_route('produtos.index');
+        return to_route('produtos.index')
+                ->with('mensagem.sucesso', "Produto '{$produto->nome}' removido com sucesso!");
     }
 }
