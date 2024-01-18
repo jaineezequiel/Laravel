@@ -5,14 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProdutosController extends Controller
 {
-    public function index(Produto $produto)
+    public function index(Request $request)
     {
         $produtos = Produto::query()->orderBy('nome')->get();
 
-        return view('admin.produtos.index', compact('produtos'));
+        $mensagemSucesso = Session::get('mensagem.sucesso');
+
+        return view('admin.produtos.index', 
+                compact('produtos', 'mensagemSucesso'));
 
     }
 
@@ -23,14 +27,18 @@ class ProdutosController extends Controller
 
     public function store(Request $request)
     {
-        Produto::create($request->all());
+        $produto = Produto::create($request->all());
+
+        Session::flash('mensagem.sucesso', "Produto '{$produto->nome}'adicionado com sucesso!");
 
         return to_route('produtos.index');
     }
 
-    public function destroy(Request $request) 
+    public function destroy(Produto $produto) 
     {
-        Produto::destroy($request->id);
+        $produto->delete();
+
+        Session::flash('mensagem.sucesso', "Produto '{$produto->nome}' removido com sucesso!");
 
         return to_route('produtos.index');
     }
