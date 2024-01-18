@@ -1,7 +1,7 @@
 <form action="{{ $action }}" method="post" class="form">
     @csrf
     
-    @isset($nome)
+    @isset($update)
     @method('PUT')
     @endisset
 
@@ -12,7 +12,7 @@
              name="nome" 
              aria-describedby="nome" 
              @isset($nome)value="{{$nome}}"@endisset                
-             required>
+             class="@error('nome') is-invalid @else is-valid @enderror">
     </div>
     <div class="mb-3">
         <label for="quantidade" class="form-label">Quantidade</label>

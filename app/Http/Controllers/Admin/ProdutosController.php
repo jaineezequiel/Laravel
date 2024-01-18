@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProdutoFormResquest;
 use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -24,7 +25,7 @@ class ProdutosController extends Controller
         return view('admin.produtos.create');
     }
 
-    public function store(Request $request)
+    public function store(ProdutoFormResquest $request)
     {
         $produto = Produto::create($request->all());
 
@@ -45,7 +46,7 @@ class ProdutosController extends Controller
         return view('admin.produtos.edit', compact('produto'));
     }
 
-    public function update(Produto $produto, Request $request) {
+    public function update(Produto $produto, ProdutoFormResquest $request) {
 
         $produto->fill($request->all());
         $produto->save();

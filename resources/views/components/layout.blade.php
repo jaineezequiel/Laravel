@@ -9,7 +9,6 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js']);
 </head>
 <body>
-
     <div class="container"> 
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
@@ -23,6 +22,16 @@
         </nav>
 
         <h1>{{ $title }}</h1>
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
 
         {{ $slot }}
     </div>
